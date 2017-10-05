@@ -1,11 +1,19 @@
 import React from 'react';
+import {
+  HashRouter as Router,
+  Route
+} from 'react-router-dom';
 import {render} from 'react-dom';
 
-import WelcomeMessage from './welcome-message';
+import Upload from './upload';
+import Download from './download';
 
 render(
-  <WelcomeMessage
-    message="Hello simple React webpack boilerplate"
-  />,
+  <Router>
+    <div>
+      <Route exact path="/" component={Upload} />
+      <Route path="/:a-:b-:c-:d" component={Download} />
+    </div>
+  </Router>,
   document.getElementById('app')
 );
