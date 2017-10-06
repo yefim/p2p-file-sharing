@@ -23,6 +23,10 @@ class Upload extends React.Component {
     client.seed(file, {announce: TRACKERS}, (torrent) => {
       console.log(torrent.infoHash);
 
+      torrent.on('upload', () => {
+        console.log('uploaded');
+      });
+
       this.setState({torrentId: torrent.infoHash});
     });
   }
