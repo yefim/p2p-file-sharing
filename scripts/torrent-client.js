@@ -8,6 +8,10 @@ export const TRACKERS = [
 
 export default new WebTorrent({
   tracker: {
-    rtcConfig: undefined
+    rtcConfig: {
+      iceServers: [
+        {urls: 'stun:stun.l.google.com:19302'}
+      ]
+    }
   }
 });
