@@ -30,21 +30,20 @@ class Upload extends React.Component {
   render() {
     const {torrentId} = this.state;
 
-    return (
-      <div>
+    if (torrentId) {
+      return (
+        <Link to={torrentId}>Send link to friend</Link>
+      );
+    } else {
+      return (
         <Dropzone
           onDrop={this.onDrop}
           multiple={false}
         >
           <h1>Upload file</h1>
         </Dropzone>
-        {
-          torrentId
-            ? <Link to={torrentId}>Send link to friend</Link>
-            : null
-        }
-      </div>
-    );
+      );
+    }
   }
 }
 
