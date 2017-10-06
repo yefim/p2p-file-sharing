@@ -6,4 +6,8 @@ export const TRACKERS = [
   ['wss://tracker.fastcast.nz']
 ];
 
-export default new WebTorrent();
+export default new WebTorrent({
+  tracker: {
+    rtcConfig: undefined
+  }
+});
