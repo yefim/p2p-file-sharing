@@ -21,13 +21,7 @@ class Upload extends React.Component {
     }
 
     client.seed(file, {announce: TRACKERS}, (torrent) => {
-      console.log(torrent.infoHash);
-
-      torrent.on('upload', () => {
-        console.log('uploaded');
-      });
-
-      this.setState({torrentId: torrent.infoHash});
+      this.setState({torrentId: torrent.magnetURI});
     });
   }
 
@@ -36,7 +30,7 @@ class Upload extends React.Component {
 
     if (torrentId) {
       return (
-        <Link to={torrentId}>Send link to friend</Link>
+        <Link to={encodeURIComponent(torrentId)}>Send link to friend</Link>
       );
     } else {
       return (

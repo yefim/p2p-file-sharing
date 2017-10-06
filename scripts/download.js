@@ -20,12 +20,10 @@ class Download extends React.Component {
   onClick() {
     const {torrentId} = this.props.match.params;
 
-    console.log(torrentId);
-
-    client.add(torrentId, (torrent) => {
-      console.log(torrent);
+    client.add(decodeURIComponent(torrentId), (torrent) => {
       const file = torrent.files[0];
       const stream = file.createReadStream();
+
       stream.on('data', () => {
         if (torrent.progress === 1) {
           file.getBlobURL((err, blobURL) => {
