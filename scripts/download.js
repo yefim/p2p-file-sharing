@@ -1,19 +1,47 @@
 import React from 'react';
 
-class Download extends React.Component {
-  render() {
-    const {
-      a, b, c, d
-    } = this.props.match.params;
+import client from './torrent-client';
 
+const downloadBlobURL = (name, blobURL) => {
+  let a = document.createElement('a');
+  document.body.appendChild(a);
+  a.download = name;
+  a.href = blobURL;
+  a.click();
+};
+
+class Download extends React.Component {
+  constructor() {
+    super();
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    const {torrentId} = this.props.match.params;
+
+    console.log(torrentId);
+
+    client.add(torrentId, (torrent) => {
+      console.log(torrent);
+      const file = torrent.files[0];
+      const stream = file.createReadStream();
+      stream.on('data', () => {
+        if (torrent.progress === 1) {
+          file.getBlobURL((err, blobURL) => {
+            if (err) {
+              throw err;
+            }
+            downloadBlobURL(file.name, blobURL);
+          });
+        }
+      });
+    });
+  }
+
+  render() {
     return (
-      <div>
-        <h1>Download</h1>
-        <p>{a}</p>
-        <p>{b}</p>
-        <p>{c}</p>
-        <p>{d}</p>
-      </div>
+      <button onClick={this.onClick}>Download</button>
     );
   }
 }

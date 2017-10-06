@@ -12,7 +12,7 @@ render(
   <Router>
     <div>
       <Route exact path="/" component={Upload} />
-      <Route path="/:a-:b-:c-:d" component={Download} />
+      <Route path="/:torrentId" component={Download} />
     </div>
   </Router>,
   document.getElementById('app')
