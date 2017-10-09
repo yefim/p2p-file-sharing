@@ -7,7 +7,9 @@ Serverless Peer to Peer File Sharing
 
 * `webpack --watch`
 
-* `open index.html`
+* `python -m SimpleHTTPServer 3333`
+
+* `open open http://localhost:3333/`
 
 ## Contributors
 
