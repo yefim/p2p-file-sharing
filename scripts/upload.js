@@ -1,10 +1,8 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import {
-  Link
-} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-import client, { TRACKERS } from './torrent-client';
+import client, {TRACKERS} from './torrent-client';
 
 class Upload extends React.Component {
   constructor() {
