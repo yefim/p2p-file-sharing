@@ -1,5 +1,5 @@
 {
-  "name": "simple-react-webpack-boilerplate",
+  "name": "p2p",
   "version": "0.0.1",
   "scripts": {
     "start": "webpack --watch",
