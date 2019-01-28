@@ -5,11 +5,11 @@ Serverless Peer to Peer File Sharing
 
 * `npm install`
 
-* `webpack --watch`
+* `npm start`
 
 * `python -m SimpleHTTPServer 3333`
 
-* `open open http://localhost:3333/`
+* `open http://localhost:3333/`
 
 ## Contributors
 
