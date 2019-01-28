@@ -2,7 +2,8 @@
   "name": "simple-react-webpack-boilerplate",
   "version": "0.0.1",
   "scripts": {
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
