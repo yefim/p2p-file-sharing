@@ -14,10 +14,18 @@ class Download extends React.Component {
   constructor() {
     super();
 
+    this.state = {status: 'initial'};
+
     this.onClick = this.onClick.bind(this);
   }
 
   onClick() {
+    if (this.state.status !== 'initial') {
+      return;
+    }
+
+    this.setState({status: 'downloading'});
+
     const {torrentId} = this.props.match.params;
 
     client.add(decodeURIComponent(torrentId), (torrent) => {
@@ -31,6 +39,7 @@ class Download extends React.Component {
               throw err;
             }
             downloadBlobURL(file.name, blobURL);
+            this.setState({status: 'initial'});
           });
         }
       });
@@ -39,7 +48,9 @@ class Download extends React.Component {
 
   render() {
     return (
-      <button onClick={this.onClick}>Download</button>
+      <button onClick={this.onClick}>
+        {this.state.status === 'initial' ? 'Download' : 'Downloading...'}
+      </button>
     );
   }
 }

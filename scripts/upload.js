@@ -28,7 +28,10 @@ class Upload extends React.Component {
 
     if (torrentId) {
       return (
-        <Link to={encodeURIComponent(torrentId)}>Send link to friend</Link>
+        <div>
+          <p>Keep this tab open and send the link below to your friend</p>
+          <input readOnly value={window.location + encodeURIComponent(torrentId)} />
+        </div>
       );
     } else {
       return (
