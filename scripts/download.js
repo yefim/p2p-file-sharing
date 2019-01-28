@@ -1,6 +1,6 @@
 import React from 'react';
 
-import client from './torrent-client';
+import {client} from './torrent-client';
 
 const downloadBlobURL = (name, blobURL) => {
   let a = document.createElement('a');
